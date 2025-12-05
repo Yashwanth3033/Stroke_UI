@@ -1,0 +1,62 @@
+<div class="ring ring-neutral-600 rounded-md bg-neutral-800 p-5 space-y-4">
+    <h4 class="">Vitals and Clinical Data</h4>
+    <div class="flex flex-wrap gap-y-8 gap-x-12 ">
+
+        <div class="flex flex-col gap-y-2 max-w-50 w-full">
+            <label for="id_bmi" class="uppercase text-neutral-300 tracking-tight font-mono">bmi (<span class="lowercase">kg/m<sup>2</sup></span>)</label>
+            <input step="0.01" name="{{ form.bmi.name }}" id="id_bmi" type="number" class="" value="{{ form.bmi.value|default:'' }}" min="0" placeholder="eg: 24.5">
+            {% if form.bmi.errors %}
+                <p class="text-red-500 font-thin text-sm">{{ form.bmi.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="flex flex-col gap-y-2 max-w-50 w-full">
+            <label for="id_avg_glucose_level" class="uppercase text-neutral-300 tracking-tight font-mono">avg glucose level</label>
+            <input step="0.01" name="{{ form.avg_glucose_level.name }}" id="id_avg_glucose_level" type="number" class="" value="{{ form.avg_glucose_level.value|default:'' }}" min="0" placeholder="eg: 141.24">
+            {% if form.avg_glucose_level.errors %}
+                <p class="text-red-500 font-thin text-sm">{{ form.avg_glucose_level.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="flex flex-col gap-y-2 max-w-50 w-full">
+            <label for="id_cholesterol" class="uppercase text-neutral-300 tracking-tight font-mono">cholesterol (<span class="normal-case">mmHg</span>)</label>
+            <input step="0.01" name="{{ form.cholesterol.name }}" id="id_cholesterol" type="number" class="" value="{{ form.cholesterol.value|default:'' }}" min="0" placeholder="eg: 180">
+            {% if form.cholesterol.errors %}
+                <p class="text-red-500 font-thin text-sm">{{ form.cholesterol.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="flex flex-col gap-y-2 max-w-50 w-full">
+            <label for="id_bp_systolic" class="uppercase text-neutral-300 tracking-tight font-mono">BP systolic (<span class="normal-case">mmHg</span>)</label>
+            <input step="0.01" name="{{ form.bp_systolic.name }}" id="id_bp_systolic" type="number" class="" value="{{ form.bp_systolic.value|default:'' }}" min="0" placeholder="eg: 120">
+            {% if form.bp_systolic.errors %}
+                <p class="text-red-500 font-thin text-sm">{{ form.bp_systolic.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="flex flex-col gap-y-2 max-w-50 w-full">
+            <label for="id_bp_diastolic" class="uppercase text-neutral-300 tracking-tight font-mono">BP diastolic (<span class="normal-case">mmHg</span>)</label>
+            <input step="0.01" name="{{ form.bp_diastolic.name }}" id="id_bp_diastolic" type="number" class="" value="{{ form.bp_diastolic.value|default:'' }}" min="0" placeholder="eg: 80">
+            {% if form.bp_diastolic.errors %}
+                <p class="text-red-500 font-thin text-sm">{{ form.bp_diastolic.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="flex flex-col gap-y-2 max-w-50 w-full">
+            <label for="id_wbc_count" class="uppercase text-neutral-300 tracking-tight font-mono">wbc count</label>
+            <input step="0.01" name="{{ form.wbc_count.name }}" id="id_wbc_count" type="number" class="" value="{{ form.wbc_count.value|default:'' }}" min="0" placeholder="eg: 8600">
+            {% if form.wbc_count.errors %}
+                <p class="text-red-500 font-thin text-sm">{{ form.wbc_count.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="flex flex-col gap-y-2 max-w-50 w-full">
+            <label for="id_rbc_count" class="uppercase text-neutral-300 tracking-tight font-mono">rbc count</label>
+            <input name="{{ form.rbc_count.name }}" id="id_rbc_count" type="number" class="" value="{{ form.rbc_count.value|default:'' }}" min="0" placeholder="eg: 4.1" step="0.01">
+            {% if form.rbc_count.errors %}
+                <p class="text-red-500 font-thin text-sm">{{ form.rbc_count.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+    </div>
+</div>

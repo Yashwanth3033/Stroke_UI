@@ -1,0 +1,106 @@
+<div class="ring ring-neutral-600 rounded-md bg-neutral-800 p-5 space-y-4">
+    <h4 class="">Patient Profile</h4>
+    <div class="flex flex-wrap gap-y-8 gap-x-12 ">
+        {# age #}
+        <div class="flex flex-col gap-y-2 max-w-50 w-full">
+            <label for="id_age" class="uppercase text-neutral-300 tracking-tight font-mono">age</label>
+            <input id="id_age" type="number" class="bg-neutral-950" value="{{ form.age.value|default:'' }}" min="0"
+                   max="100" placeholder="eg: 45" name="{{ form.age.name }}">
+            {% if form.age.errors %}
+                <p class="text-red-500 font-thin text-sm">{{ form.age.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        <div class="flex flex-col gap-y-2">
+            <label class="uppercase text-neutral-300 tracking-tight font-mono">Gender</label>
+
+            <div class="flex gap-x-4">
+                {% for value, label in form.gender.field.choices %}
+                    <div class="ring rounded-md tracking-tight">
+                        <input
+                                type="radio"
+                                name="{{ form.gender.name }}"
+                                value="{{ value }}"
+                                class="sr-only peer"
+                                {% if form.gender.value == value %}checked{% endif %}
+                                id="martial_stat_{{ forloop.counter0 }}"
+                        />
+                        <label for="martial_stat_{{ forloop.counter0 }}"
+                               class="block peer-checked:bg-rose-500/80 px-4 py-1.5 rounded-md cursor-pointer">{{ label }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if form.gender.errors %}
+                <p class="text-red-500 font-thin text-sm">{{ form.gender.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        {# martial status #}
+        <div class="flex flex-col gap-y-2">
+            <label class="uppercase text-neutral-300 tracking-tight font-mono">Martial status</label>
+
+            <div class="flex gap-x-4">
+                {% for value, label in form.martial_status.field.choices %}
+                    <div class="ring rounded-md tracking-tight">
+                        <input
+                                type="radio"
+                                name="{{ form.martial_status.name }}"
+                                value="{{ value }}"
+                                class="sr-only peer"
+                                {% if form.martial_status.value == value %}checked{% endif %}
+                                id="gender_{{ forloop.counter0 }}"
+                        />
+                        <label for="gender_{{ forloop.counter0 }}"
+                               class="block peer-checked:bg-rose-500/80 px-4 py-1.5 rounded-md cursor-pointer">{{ label }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if form.martial_status.errors %}
+                <p class="text-red-500 font-thin text-sm">{{ form.martial_status.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        {# work type #}
+        <div class="flex flex-col gap-y-2">
+            <label for="id_work_type" class="uppercase text-neutral-300 tracking-tight font-mono">work type</label>
+            <select name="{{ form.work_type.name }}" id="id_work_type"
+                    class="outline-none ring bg-neutral-900 rounded-md px-4 py-1.5">
+                {% for value, label in form.work_type.field.choices %}
+                    <option {% if form.work_type.value == value %}selected{% endif %} value="{{ value }}" class="">{{ label }}</option>
+                {% endfor %}
+            </select>
+            {% if form.work_type.errors %}
+                <p class="text-red-500 font-thin text-sm">{{ form.work_type.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+        {# residence type #}
+        <div class="flex flex-col gap-y-2">
+            <label class="uppercase text-neutral-300 tracking-tight font-mono">residence type</label>
+
+            <div class="flex gap-x-4">
+                {% for value, label in form.residence_type.field.choices %}
+                    <div class="ring rounded-md tracking-tight">
+                        <input
+                                type="radio"
+                                name="{{ form.residence_type.name }}"
+                                value="{{ value }}"
+                                class="sr-only peer"
+                                {% if form.residence_type.value == value %}checked{% endif %}
+                                id="residence_{{ forloop.counter0 }}"
+                        />
+                        <label for="residence_{{ forloop.counter0 }}"
+                               class="block peer-checked:bg-rose-500/80 px-4 py-1.5 rounded-md cursor-pointer">{{ label }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if form.residence_type.errors %}
+                <p class="text-red-500 font-thin text-sm">{{ form.residence_type.errors.0 }}</p>
+            {% endif %}
+        </div>
+
+    </div>
+</div>

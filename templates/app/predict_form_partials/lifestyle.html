@@ -1,0 +1,198 @@
+<div class="ring ring-neutral-600 rounded-md bg-neutral-800 p-5 space-y-4">
+    <h4 class="uppercase text-neutral-300 tracking-tight font-mono">Patient Profile</h4>
+
+    <div class="flex flex-wrap gap-y-8 gap-x-12">
+
+        {# Hypertension #}
+        <div class="flex flex-col gap-y-2">
+            <label class="uppercase text-neutral-300 tracking-tight font-mono">
+                Hypertension
+            </label>
+
+            <div class="flex gap-x-4">
+                {% for value, label in form.hypertension.field.choices %}
+                    <div class="ring rounded-md tracking-tight">
+                        <input
+                            type="radio"
+                            name="{{ form.hypertension.name }}"
+                            value="{{ value }}"
+                            class="sr-only peer"
+                            {% if form.hypertension.value == value %}checked{% endif %}
+                            id="hypertension{{ forloop.counter0 }}"
+                        />
+                        <label
+                            for="hypertension{{ forloop.counter0 }}"
+                            class="block peer-checked:bg-rose-500/80 px-4 py-1.5 rounded-md cursor-pointer"
+                        >
+                            {{ label }}
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if form.hypertension.errors %}
+                <p class="text-red-500 font-thin text-sm">
+                    {{ form.hypertension.errors.0 }}
+                </p>
+            {% endif %}
+        </div>
+
+        {# Heart disease #}
+        <div class="flex flex-col gap-y-2">
+            <label class="uppercase text-neutral-300 tracking-tight font-mono">
+                Heart disease
+            </label>
+
+            <div class="flex gap-x-4">
+                {% for value, label in form.heart_disease.field.choices %}
+                    <div class="ring rounded-md tracking-tight">
+                        <input
+                            type="radio"
+                            name="{{ form.heart_disease.name }}"
+                            value="{{ value }}"
+                            class="sr-only peer"
+                            {% if form.heart_disease.value == value %}checked{% endif %}
+                            id="heart_disease{{ forloop.counter0 }}"
+                        />
+                        <label
+                            for="heart_disease{{ forloop.counter0 }}"
+                            class="block peer-checked:bg-rose-500/80 px-4 py-1.5 rounded-md cursor-pointer"
+                        >
+                            {{ label }}
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if form.heart_disease.errors %}
+                <p class="text-red-500 font-thin text-sm">
+                    {{ form.heart_disease.errors.0 }}
+                </p>
+            {% endif %}
+        </div>
+
+        {# Diabetes status #}
+        <div class="flex flex-col gap-y-2">
+            <label class="uppercase text-neutral-300 tracking-tight font-mono">
+                Diabetes status
+            </label>
+
+            <div class="flex gap-x-4">
+                {% for value, label in form.diabetes_status.field.choices %}
+                    <div class="ring rounded-md tracking-tight">
+                        <input
+                            type="radio"
+                            name="{{ form.diabetes_status.name }}"
+                            value="{{ value }}"
+                            class="sr-only peer"
+                            {% if form.diabetes_status.value == value %}checked{% endif %}
+                            id="diabetes_status{{ forloop.counter0 }}"
+                        />
+                        <label
+                            for="diabetes_status{{ forloop.counter0 }}"
+                            class="block peer-checked:bg-rose-500/80 px-4 py-1.5 rounded-md cursor-pointer"
+                        >
+                            {{ label }}
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if form.diabetes_status.errors %}
+                <p class="text-red-500 font-thin text-sm">
+                    {{ form.diabetes_status.errors.0 }}
+                </p>
+            {% endif %}
+        </div>
+
+        {# Family history #}
+        <div class="flex flex-col gap-y-2">
+            <label class="uppercase text-neutral-300 tracking-tight font-mono">
+                Family history
+            </label>
+
+            <div class="flex gap-x-4">
+                {% for value, label in form.family_history.field.choices %}
+                    <div class="ring rounded-md tracking-tight">
+                        <input
+                            type="radio"
+                            name="{{ form.family_history.name }}"
+                            value="{{ value }}"
+                            class="sr-only peer"
+                            {% if form.family_history.value == value %}checked{% endif %}
+                            id="family_history{{ forloop.counter0 }}"
+                        />
+                        <label
+                            for="family_history{{ forloop.counter0 }}"
+                            class="block peer-checked:bg-rose-500/80 px-4 py-1.5 rounded-md cursor-pointer"
+                        >
+                            {{ label }}
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if form.family_history.errors %}
+                <p class="text-red-500 font-thin text-sm">
+                    {{ form.family_history.errors.0 }}
+                </p>
+            {% endif %}
+        </div>
+
+        {# Smoking status #}
+        <div class="flex flex-col gap-y-2">
+            <label for="id_smoking_status" class="uppercase text-neutral-300 tracking-tight font-mono">
+                Smoking status
+            </label>
+
+            <select
+                name="{{ form.smoking_status.name }}"
+                id="id_smoking_status"
+                class="outline-none ring bg-neutral-900 rounded-md px-4 py-1.5"
+            >
+                {% for value, label in form.smoking_status.field.choices %}
+                    <option {% if form.smoking_status.value == value %}selected{% endif %} value="{{ value }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+
+            {% if form.smoking_status.errors %}
+                <p class="text-red-500 font-thin text-sm">
+                    {{ form.smoking_status.errors.0 }}
+                </p>
+            {% endif %}
+        </div>
+
+        <div class="flex flex-col gap-y-2 max-w-72 w-full">
+            <div class="flex justify-between items-center">
+                <label for="id_alcohol_consumption" class="uppercase text-neutral-300 tracking-tight font-mono">
+                    Alcohol Consumption
+                </label>
+                <p id="alcohol_consumption_text" class="ring bg-neutral-800 rounded px-4 py-0.5">{{ form.alcohol_consumption.value|default:1 }}</p>
+            </div>
+
+            <input id="id_alcohol_consumption" name="{{ form.alcohol_consumption.name }}" type="range" min="1" max="8" step="1" value="{{ form.alcohol_consumption.value|default:1 }}">
+
+            {% if form.alcohol_consumption.errors %}
+                <p class="text-red-500 font-thin text-sm">
+                    {{ form.alcohol_consumption.errors.0 }}
+                </p>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    const alcoholConsumptionRange = document.getElementById("id_alcohol_consumption");
+    const alcoholConsumptionText = document.getElementById("alcohol_consumption_text");
+
+    alcoholConsumptionText.innerText = alcoholConsumptionRange.value;
+
+    alcoholConsumptionRange.addEventListener("input", (e) => {
+        alcoholConsumptionText.innerText = e.target.value;
+    });
+
+</script>
+
+

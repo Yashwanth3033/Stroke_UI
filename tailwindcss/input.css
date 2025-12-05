@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@source "../templates/**/*.html";
+@source "../brain_stroke_app/static/**/*.js";
+
+@theme {
+    --color-secondary:var(--color-neutral-400);
+}
+
+@layer base {
+    body {
+        @apply bg-neutral-950 text-white;
+    }
+
+    input[type="text"],input[type="number"],input[type="email"],input[type="password"],input[type="url"] {
+        @apply outline-none ring rounded-md placeholder:text-neutral-400 px-4 py-1.5;
+    }
+}
+
+@layer components {
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-bold;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.75rem;
+    }
+
+    h4 {
+        font-size: 1.5rem;
+    }
+
+    h5 {
+        font-size: 1.25rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+
+
+}
+
+
+
