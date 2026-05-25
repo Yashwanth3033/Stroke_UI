@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_protect  # 🌟 Added this secure import
 from .forms import PredictionForm
 from .ml_model import make_prediction
 
@@ -13,6 +14,7 @@ FEATURES = [
 
 # Create your views here.
 @login_required
+@csrf_protect  # 🌟 Added this decorator right here to fix python:S3752
 def predict(request):
     if request.method == "POST":
         form = PredictionForm(request.POST)
