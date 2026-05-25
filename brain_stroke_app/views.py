@@ -13,7 +13,7 @@ FEATURES = [
 ]
 
 # Create your views here.
-@login_required
+@login_required(only=["GET", "POST"])
 @csrf_protect  # 🌟 Added this decorator right here to fix python:S3752
 def predict(request):
     if request.method == "POST":
@@ -36,4 +36,3 @@ def predict(request):
     context = {"form": form}
 
     return render(request, "app/predict.html", context=context)
-
